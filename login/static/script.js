@@ -118,8 +118,10 @@ function Next(){
 
 //submit fun
 function Submit(){
+    sessionStorage.setItem("correct_answer",corrected_answer )
     $(".quiz-bg").css("height","100vh")
-    var message = sessionStorage.setItem("correct_answer",corrected_answer )
+    var message = sessionStorage.getItem("correct_answer")
+    console.log(message)
     if(message <= 5){
         document.getElementById("message").value = "pass"
     }else{
