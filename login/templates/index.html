@@ -1,0 +1,60 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Quiz</title>
+    
+    <!-- load static files -->
+    {% load static %}
+    <link rel="shortcut icon" href="{%static 'images/favicon.png' %}" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+
+<body>
+    {% block content %}
+        <div class="main pt-5 pb-5">
+            <div class="main-head">
+                <div class="card">
+                    <div class="card-heading">
+                        <h2 class="title">Welcome to Testpress</h2>
+                    </div>
+
+                    <!-- load error message -->
+                    {% for message in messages %}
+                    <div class="alert alert-danger">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    
+                    <!-- load actual content-->
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <label class="name">Name</label>
+                                <input type="text" name="name" id="user_name">
+                            </div>
+                            <div class="mb-4">
+                                <label class="password">Password</label>
+                                <input type="password" name="password" id="password">
+                            </div>                            
+                            <div class="button">
+                                <button type="submit" class="btn" onclick="login()">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

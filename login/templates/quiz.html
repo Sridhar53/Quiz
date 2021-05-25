@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Quiz</title>
+    
+    <!-- load static files -->
+    {% load static %}
+    <link rel="shortcut icon" href="{%static 'images/favicon.png' %}" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+
+<body>
+    {% block content %}
+    <section class="quiz-bg">
+        <div class="container-fluid">
+            <div class="header">
+                <h1>Test Quiz</h1>
+            </div>
+
+            <div class="container quiz-content">
+                <div class="row quiz-list">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <h4 class="name" id="name_1"></h4>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <button class="start_quiz" id="take_test_1">Take Test</button>
+                    </div>
+                </div>
+                <div class="row quiz-list">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <h4 class="name" id="name_2"></h4>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <button class="start_quiz" id="take_test_2">Take Test</button>
+                    </div>
+                </div>
+                <div class="row quiz-list">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <h4 class="name" id="name_3"></h4>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <button class="start_quiz" id="take_test_3">Take Test</button>
+                    </div>
+                </div>
+                <div class="row quiz-list">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <h4 class="name" id="name_4"></h4>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <button class="start_quiz" id="take_test_4">Take Test</button>
+                    </div>
+                </div>
+                <div class="row quiz-list">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <h4 class="name" id="name_5"></h4>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <button class="start_quiz" id="take_test_5">Take Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+    <script>
+        
+        $(document).ready(function(){
+            // btnName();
+            $.getJSON("../static/url.json", function(data){
+                console.log(data)
+                for(var i=0;i<data.length;i++){
+                    document.getElementById("name_"+(i+1)).innerHTML = data[i].name
+                }
+            });
+        });
+        
+        $("button").click(function() {
+            var id=$(this).attr('id');
+            sendApiRequest(id);
+        }); 
+    </script>
+
+
+</body>
+
+</html>
