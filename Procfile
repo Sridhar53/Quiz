@@ -1,1 +1,1 @@
-web: gunicorn Testpress.wsgi --log-file -
+web: gunicorn quiz.wsgi --log-file -
