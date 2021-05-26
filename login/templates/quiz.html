@@ -19,9 +19,12 @@
 <body>
     {% block content %}
     <section class="quiz-bg">
+        <a onclick="logout()" style="float: right; margin-top: 34px; margin-right: 70px; background: #32cd32; color: white; padding: 10px 20px; text-decoration: none; cursor: pointer;">Logout</a>
+
         <div class="container-fluid">
             <div class="header">
                 <h1>Test Quiz</h1>
+                
             </div>
 
             <div class="container quiz-content">
@@ -86,6 +89,16 @@
             var id=$(this).attr('id');
             sendApiRequest(id);
         }); 
+
+        function logout(){
+            localStorage.removeItem("myData")
+            localStorage.removeItem("id")
+            sessionStorage.removeItem("correct_answer")
+            sessionStorage.removeItem("Name")
+            sessionStorage.removeItem("time")
+            sessionStorage.removeItem("wrong_answer")
+            location.href="/"
+        }
     </script>
 
 

@@ -123,15 +123,17 @@ function Submit(){
     var message = sessionStorage.getItem("correct_answer")
     console.log(message)
     if(message <= 5){
-        document.getElementById("message").value = "pass"
-    }else{
         document.getElementById("message").value = "fail"
+    }else{
+        document.getElementById("message").value = "pass"
     }
     sessionStorage.setItem("wrong_answer",wronged_answer )
     document.getElementById("correct_ans").value = sessionStorage.getItem("correct_answer")
     document.getElementById("wrong").value = sessionStorage.getItem("wrong_answer")
     document.getElementById("user").value = sessionStorage.getItem("Name")  
 }
+
+
 
 // function btnName(){
 //     if(localStorage.getItem("id")){

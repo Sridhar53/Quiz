@@ -313,3 +313,7 @@ th, td {
 .quiz-content{
     padding: 25px 0;
 }
+.logout{
+    background-color: green;
+    float: right;
+}
